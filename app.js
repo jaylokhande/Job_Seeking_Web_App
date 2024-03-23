@@ -33,5 +33,4 @@ app.use('/api/v1/job',jobRouter)
 dbConnection();
 app.use(errorMiddleware)
 
-
 export default app ;
