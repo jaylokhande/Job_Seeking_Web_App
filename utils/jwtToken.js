@@ -8,11 +8,11 @@ export const sendToken = (user , statuscode ,res ,message )=>{
         ),
         httpOnly : true,
         
-    }
+    };
     res.status(statuscode).cookie("token",token,options).json({
         success : true ,
         user ,
         message,
         token,
-    })
-}
+    });
+};
