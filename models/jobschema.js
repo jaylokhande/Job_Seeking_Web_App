@@ -15,9 +15,13 @@ const jobschema = new mongoose.Schema({
     },
     category :{
         type : String ,
-        required : [true , "Job catgeory "]
+        required : [true , "Job catgeory is required"]
     },
     country :{
+        type : String ,
+        required : [true , "Job country required"]
+    },
+    city :{
         type : String ,
         required : [true , "Job city required"]
     },
@@ -25,7 +29,7 @@ const jobschema = new mongoose.Schema({
     {
         type : String ,
         required : [true , "Please provide exact loation"],
-        minlength : [50,"Job Location must contain at least 50 char"],
+        minlength : [15,"Job Location must contain at least 50 char"],
     },
     fixedSalary : {
         type : Number,
@@ -58,4 +62,4 @@ const jobschema = new mongoose.Schema({
 
 })
 
-export const job = mongoose.model("Job",jobschema);
+export const Job = mongoose.model("Job",jobschema);
