@@ -1,11 +1,11 @@
-import { catchAsyncErrors } from "../middlewares/catchAsyncError.js";
+import { catchAsyncError } from "../middlewares/catchAsyncError.js";
 import ErrorHandler from "../middlewares/error.js";
 import { Application } from "../models/applicationSchema.js";
 import { Job } from "../models/jobschema.js";
 import cloudinary from "cloudinary";
 
 
-export const employerGetAllApplications = catchAsyncErrors(
+export const employerGetAllApplications = catchAsyncError(
     async (req, res, next) => {
       const { role } = req.user;
       if (role === "Job Seeker") {
@@ -60,4 +60,3 @@ export const employerGetAllApplications = catchAsyncErrors(
     }
   );
 
-  
