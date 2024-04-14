@@ -22,7 +22,7 @@ export const employerGetAllApplications = catchAsyncError(
     }
   );
 
-  export const jobseekerGetAllApplications = catchAsyncErrors(
+  export const jobseekerGetAllApplications = catchAsyncError(
     async (req, res, next) => {
       const { role } = req.user;
       if (role === "Employer") {
@@ -39,7 +39,7 @@ export const employerGetAllApplications = catchAsyncError(
     }
   );
 
-  export const jobseekerDeleteApplication = catchAsyncErrors(
+  export const jobseekerDeleteApplication = catchAsyncError(
     async (req, res, next) => {
       const { role } = req.user;
       if (role === "Employer") {
