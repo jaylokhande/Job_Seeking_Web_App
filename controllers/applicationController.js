@@ -116,6 +116,7 @@ export const employerGetAllApplications = catchAsyncError(
       !employerID ||
       !resume
     ) {
+      // console.log(name + "\n" + email + "\n" + coverLetter +"\n"+phone + "\n"+address+"\n"+applicantID+"\n"+employerID + "\n"+resume);
       return next(new ErrorHandler("Please fill all fields.", 400));
     }
     const application = await Application.create({
