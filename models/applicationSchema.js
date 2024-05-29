@@ -59,6 +59,11 @@ const applicationSchema = new mongoose.Schema({
       required: true,
     },
   },
+  role_apply : {
+    type: String,
+    required : [true , "These field required from server "],
+  }
+
 });
 
 export const Application = mongoose.model("Application", applicationSchema);

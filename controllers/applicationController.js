@@ -100,10 +100,12 @@ export const employerGetAllApplications = catchAsyncError(
       return next(new ErrorHandler("Job not found!", 404));
     }
     const jobDetails = await Job.findById(jobId);
+    
     if (!jobDetails) {
       return next(new ErrorHandler("Job not found!", 404));
     }
-  
+    const role_apply = jobDetails.title ;
+    console.log(role_apply);
     const employerID = {
       user: jobDetails.postedBy,
       role: "Employer",
@@ -129,6 +131,7 @@ export const employerGetAllApplications = catchAsyncError(
       address,
       applicantID,
       employerID,
+      role_apply,
       resume: {
         public_id: cloudinaryResponse.public_id,
         url: cloudinaryResponse.secure_url,
