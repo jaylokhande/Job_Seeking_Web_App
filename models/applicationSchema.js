@@ -66,7 +66,8 @@ const applicationSchema = new mongoose.Schema({
   Application_View : {
     type : String,
     default : "false"
-  }
+  },
+  
 
 });
 

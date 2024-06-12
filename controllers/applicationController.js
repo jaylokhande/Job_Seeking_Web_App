@@ -49,10 +49,14 @@ export const employerGetAllApplications = catchAsyncError(
         const applications = await Application.find({"resume.url":imageUrl})
         const filter = applications[0] ;
         const f_filter = {resume : filter.resume}
-        console.log(f_filter);
-        const update = {Application_View :"True"}
+        // console.log(f_filter);
+        const update = {Application_View :"True" }
         const app_view = await Application.findOneAndUpdate(f_filter , update)
         console.log(app_view)
+        res.status(200).json({
+          success: true,
+          app_view,
+        });
 
       }else{
         return next(
@@ -61,6 +65,29 @@ export const employerGetAllApplications = catchAsyncError(
       }
     }
   );
+
+  export const notificationapplication = catchAsyncError(
+    async (req,res,next) =>{
+      const {role} = req.user ;
+      if(role === "Job Seeker"){
+        console.log(req.user);
+        const {_id} = req.user ;
+        const app_view = await Application.find({"applicantID.user":_id , "Application_View":"True"});
+        console.log(app_view);
+        res.status(200).json({
+          success: true,
+          app_view,
+        });
+
+
+      }else{
+        return next(
+          new ErrorHandler("Employer not allowed to access this resource.", 400)
+        );
+      }
+    }
+  );
+
 
   export const jobseekerDeleteApplication = catchAsyncError(
     async (req, res, next) => {
